@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import React from 'react'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Help from './pages/Help'
+import Home from './pages/Home'
+import Comment from './pages/Comment'
+import CommentsList from './pages/CommentsList'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './App.css';
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/about'>
+          <About />
+        </Route>
+        <Route path='/contact'>
+          <Contact />
+        </Route>
+        <Route path='/help'>
+          <Help />
+        </Route>
+        <Route path='/comments-list'>
+          <CommentsList />
+        </Route>
+        <Route path='/comment/:id'>
+          <Comment />
+        </Route>
+      </Switch>
+    </Router>
+
+
   );
 }
 
